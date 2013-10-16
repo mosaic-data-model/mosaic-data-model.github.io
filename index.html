@@ -23,37 +23,102 @@
 
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <p>Mosaic is a modular set of data models and file formats for molecular
+simulation. The two main goals of the Mosaic project are</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<ul>
+<li><p>Provide a way to store a very detailed description of a molecular
+simulation for publication and archiving, according to the
+principles of
+[[<a href="http://en.wikipedia.org/wiki/Reproducibility%7CReproducible">http://en.wikipedia.org/wiki/Reproducibility|Reproducible</a> Research]].</p></li>
+<li><p>Facilitate the exchange of data between molecular simulation
+software packages.</p></li>
+</ul><p>For an overview of what changes in molecular simulation Mosaic will
+enable, see [[MolecularSimulationWithMosaic]]. For the criteria that
+influenced design decisions in Mosaic, see [[DesignCriteria]]. For
+example files and a PDF version of the documentation, see the
+[[<a href="http://bitbucket.org/molsim/mosaic/downloads%7Cdownload">http://bitbucket.org/molsim/mosaic/downloads|download</a> page]].</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>=== Contributing to Mosaic development ===</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>If you would like to contribute to the development of Mosaic, please
+join the mailing list at
+[[<a href="https://groups.google.com/d/forum/mosaic-developers%5D">https://groups.google.com/d/forum/mosaic-developers]</a>].</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p>=== Current status ===</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>While Mosaic should still be considered "under development", it has been used in real research projects and publications. Future developments of the specification are most likely to be extensions.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>For an overview of development plans, see the [[Future]] page.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>=== The Mosaic definition ===</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>Mosaic currently defines five kinds of data items:</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li><p>A //universe// is the definition of the system topology (periodic
+boundary conditions etc.) and the chemical structure of its
+molecules (fragment hierarchy, bond network). The universe
+definition is the central data structure in Mosaic, because it
+permits the correct interpretation of the other data types.</p></li>
+<li><p>A //configuration// provides a set of positions for all atoms plus
+the geometric parameters of the simulation cell if periodic boundary
+conditions are used.</p></li>
+<li><p>A //property// stores one value for each atom in a universe. The
+value can be an N-dimensional array of integers or floats. Property
+items are very versatile. They can be used to store masses, charges,
+velocities, forces, and much more.</p></li>
+<li><p>A //label// stores a text string for each atom in a universe. Labels
+are used for storing alternate atom names, atom types, and similar
+information.</p></li>
+<li><p>A //selection// stores a subset of the atoms or sites in a universe.
+Selections are used for identifying parts of the system (e.g. solvent,
+active site, ...).</p></li>
+</ul><p>The Mosaic data model defines how these data items are expressed in
+terms of basic data items (integers, floats, text strings) and basic
+data structures (lists, arrays, trees, ...). The Mosaic file format
+definitions describe how the data model is represented in files.
+Conversion between different Mosaic file formats is exact; no
+information is lost and no information needs to be deduced.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>Currently there are two Mosaic file formats:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li><p>The [[<a href="http://www.hdfgroup.org/HDF5/%7CHDF5%5D">http://www.hdfgroup.org/HDF5/|HDF5]</a>] format provides compact
+and efficient binary storage in a platform-independent way.
+HDF5 is the right choice for large data sets (e.g. Molecular Dynamics
+trajectories) and can be interfaced easily with programs written
+in C, C++, or Fortran because of its array-based nature.</p></li>
+<li><p>The [[<a href="http://www.w3.org/XML/%7CXML%5D">http://www.w3.org/XML/|XML]</a>] format provides text-based storage
+that can be inspected and modified with any plain-text editor. A large
+number of XML processing programs and XML libraries for all major
+programming languages make it easy to do non-numerical processing
+on molecular systems.</p></li>
+</ul><p>Example files (converted from PDB structures) are available in the
+[[<a href="http://bitbucket.org/molsim/mosaic/downloads%7Cdownload">http://bitbucket.org/molsim/mosaic/downloads|download</a> section]].</p>
+
+<p>=== The Mosaic Python library ===</p>
+
+<p>The current Mosaic Python library implements three
+in-memory representations of the Mosaic data model and I/O in the two
+supported file formats. It also contains an import module for
+structures from the [[<a href="http://www.wwpdb.org/%7CProtein">http://www.wwpdb.org/|Protein</a> Data Bank]].  A
+simple command-line tool can convert between the file formats and
+write imported PDB structures to Mosaic files.</p>
+
+<p>=== Related projects ===</p>
+
+<ul>
+<li>The <a href="RMF">[http://salilab.github.com/rmf/rmf.html|Rich Molecule Format]</a> shares some aspects of Mosaic, in particular the hierarchical
+representation of molecules. However, the focus seems different
+(molecular structures with annotations for visual representation
+and experimental information), leading to different design choices.</li>
+</ul><p>=== Acknowledgements ===</p>
+
+<p>Mosaic development was supported by the
+[[<a href="http://www.agence-nationale-recherche.fr/%7CAgence">http://www.agence-nationale-recherche.fr/|Agence</a> Nationale de la Recherche]]
+under
+[[<a href="http://dirac.cnrs-orleans.fr/sputnik/home/%7Ccontract">http://dirac.cnrs-orleans.fr/sputnik/home/|contract</a> N° ANR-2010-COSI-001-01]].</p>
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
