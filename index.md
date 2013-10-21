@@ -13,12 +13,11 @@ simulation. The two main goals of the Mosaic project are
   principles of
   [Reproducible Research](http://en.wikipedia.org/wiki/Reproducibility).
 
-* Facilitate the exchange of data between molecular simulation
-  software packages ([details](molecular_simulation.html))
+* [Facilitate the exchange of data](molecular_simulation.html)
+  between molecular simulation software packages.
 
 For more background information, see the
-[roles of Mosaic in molecular simulation](molecular_simulation.html)
-and the [Mosaic design criteria](design_criteria.html).
+[Mosaic design criteria](design_criteria.html).
 
 ## Contributing to Mosaic development
 
@@ -27,13 +26,14 @@ join the [mailing list](https://groups.google.com/d/forum/mosaic-developers).
 
 ## Current status
 
-While Mosaic should still be considered "under development", it has
-been used in real research projects and publications.
-[Future developments](future.html) of the specification are most
-likely to be extensions.
+Mosaic has been used successfully in real research projects and
+publications. [Future developments](future.html) of the specification
+are most likely to be extensions. The Python library should be
+considered alpha-level, because details of the interface can still
+change.
 
 
-## The Mosaic definition
+## Mosaic overview
 
 Mosaic currently defines five kinds of data items:
 
@@ -53,7 +53,7 @@ Mosaic currently defines five kinds of data items:
   velocities, forces, and much more.
 
 * A *label* stores a text string for each atom in a universe. Labels
-  are used for storing alternate atom names, atom types, and similar
+  are used for storing atom names, atom types, and similar
   information.
 
 * A *selection* stores a subset of the atoms or sites in a universe.

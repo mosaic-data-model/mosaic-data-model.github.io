@@ -26,6 +26,7 @@ A few data items are straightforward to define and implement, it just
 needs to be done. Mosaic should thus soon include:
 
  * atom pair lists (e.g. for distance constraints)
+ * rigid-body definitions
  * normal modes
 
 
@@ -51,6 +52,12 @@ forces, energies, etc. A trajectory format should not impose
 limitations on what can be stored, but also clearly identify the
 stored quantities to ensure a correct interpretation.
 
+We are currently exploring [H5MD](http://nongnu.org/h5md/draft.html),
+a proposed HDF5-based format for trajectories that covers a wider
+range of simulation techniques than Mosaic, but does not by itself
+provide a description of the molecular system. It looks feasible
+to add a few Mosaic datasets to an H5MD trajectory and obtain
+a format that fulfills all the requirements discussed above.
 
 ## Force fields
 
@@ -77,7 +84,7 @@ number of simple mathematical functions.
 
 Volumetric data takes the form of a grid in space with a numerical
 value associated with each grid point. It is most frequently used
-for experimental date (e.g. electron density maps in crystallography
+for experimental data (e.g. electron density maps in crystallography
 and electron microscopy), but can also be computed from a simulation
 (e.g. a mass or charge density).
 
@@ -100,6 +107,8 @@ of Mosaic data items are handled consistently by all programs.
 As an example, consider a crystallographic structure as stored in the
 PDB. Its storage in Mosaic requires a universe, a configuration, and
 two properties for displacement factors and occupancies. A convention
-would fix the remaining details: the names of the data items, whether
-to always store occupancies or only if at least one of them is less
-than 1, etc.
+fixes the remaining details: the names of the data items, whether to
+always store occupancies or only if at least one of them is less than
+1, etc. [This particular convention]
+(http://mosaic-data-model.github.io/mosaic-specification/pdb_convention.html)
+is already part of the Mosaic specification.
