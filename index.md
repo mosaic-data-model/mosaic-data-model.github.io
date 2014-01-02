@@ -17,7 +17,12 @@ simulation. The two main goals of the Mosaic project are
   between molecular simulation software packages.
 
 For more background information, see the
-[Mosaic design criteria](design_criteria.html).
+[Mosaic design criteria](design_criteria.html) and the paper
+["MOSAIC: A Data Model and File Formats for Molecular Simulations"](http://dx.doi.org/10.1021/ci400599y). For
+those who don't have a subscription to the Journal of Chemical
+Information and Modeling, the paper is available for free (limited to
+50 downloads during the first year) through the
+[ACS Articles on Request service](http://pubs.acs.org/articlesonrequest/AOR-dADBta6jVTVtVb6bbGmJ) (registration required).
 
 ## Contributing to Mosaic development
 
