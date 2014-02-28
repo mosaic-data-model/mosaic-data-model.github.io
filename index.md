@@ -97,7 +97,7 @@ write imported PDB structures to Mosaic files.
 
 ## Related projects
 
-* The [Rich Molecule Format](http://salilab.github.com/rmf/rmf.html)
+* The [Rich Molecular Format](http://salilab.github.com/rmf/)
   (RMF) shares some aspects of Mosaic, in particular the hierarchical
   representation of molecules. However, the focus seems different
   (molecular structures with annotations for visual representation
